@@ -6,7 +6,7 @@ $("#submit").click(function(){
 		alert("bạn chưa nhập tên")
 	}
 	else{
-		socket = io("http://localhost:3000/");
+		socket = io("https://webrtcbythaicute.herokuapp.com/");
 		
 		$("#ten").text(nameuser);
 		socket.emit("tenuser",nameuser);
