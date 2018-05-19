@@ -14,7 +14,6 @@ $("#submit").click(function(){
 		socket.on("server gui kq dk", function(data){
 			if(data==0){
 				$("#formdk").css("display","block")
-				$("#nameuser").css("display","none")
 				$("#list").css("display","none")
 				alert("ten dang nhap da ton tai");
 				
@@ -29,7 +28,7 @@ $("#submit").click(function(){
 		socket.on("listuser", function(data){
 			x="";
 			data.forEach( function(i) {
-			x += 	"<tr><td>"+i+"</td></tr>";
+				x += 	"<tr><td>"+i+"</td></tr>";
 			});
 			x= "<table><tr><th>Danh sách user online</th></tr>" +x;
 			x = x + "</table>"
