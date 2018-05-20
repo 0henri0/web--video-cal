@@ -79,7 +79,8 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
-<body style="width: 80%;background-color:#F0F8FF; margin-left: 10%">
+<body style="width: 80%;background-color:#F0F8FF; margin-left: 10%; height: 2000px">
+ 
   <div>
     <div id="list" style=" position: absolute; margin-left: -100px;margin-top: 50px;display: none">
       
@@ -88,7 +89,7 @@
     
     </div>
     <div id="user">
-      <div id="nameuser" style="display: none;float: right;margin-right: 50px">Xin chào: <a id="ten"></a> ! <a id="logout" href="#">logout</a></div>
+      <div id="nameuser" style="display: none;float: right;margin-right: 50px">Xin chào: <a id="ten"></a> ! <a id="logout" href="#">logout</a><div><button id="createroom">tạo room chat</button></div></div>
 
     </div>
     <div id="formdk" style="width: 40%;text-align: center; margin-top: 250px;margin-left: 30%; display:block";>
@@ -98,6 +99,17 @@
         <button id="submit">đăng ký</button>
       </div>
     </div>
+ <!-- video -->
+    <div>
+      
+    <video id="video"></video>
+  <canvas id="canvas" width="1280" height="720"></canvas>
+     
+    </div>
+
+<img id="streaming">
+
+
     <script src="/js/myjs.js"></script>
   </div>
 </body>
