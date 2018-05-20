@@ -39,13 +39,16 @@
  io.on("connection", function(socket){
   var name="";
   socket.on("disconnect", function(){
+
     if(name!=""){
+
       if(idsocketvideo == socket.id){
         console.log(idsocketvideo)
         io.sockets.emit("disconnectvideo")
         checkonstream = 0
       }
-      onl--;    
+      onl--;
+      
       console.log(name + " :da ngat ket noi");
       console.log("so nguoi dang online: " +onl);
         x = manguser.indexOf(name);
@@ -92,6 +95,7 @@
     checkonstream = 1;
     idsocketvideo = socket.id;
     io.sockets.emit("disablebutton")
+    socket.emit("checkvideoonstream")
     });
   socket.on('streaming', (image) => {
      io.sockets.emit('play stream', image)

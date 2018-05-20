@@ -80,16 +80,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body style="width: 80%;background-color:#F0F8FF; margin-left: 10%; height: 2000px">
-  <div>
-     <img id="streaming" style="position: absolute; margin-top: 100px;margin-left: 100px">
-     <textarea id="txtarea">
-      
-     </textarea>
-     <input id="txttext" placeholder="nhập...">
-     <button id="btnchat">Gửi</button>
-  </div>
-
-
+ 
   <div>
     <div id="list" style=" position: absolute; margin-left: -100px;margin-top: 50px;display: none">
       
@@ -104,22 +95,23 @@
     <div id="formdk" style="width: 40%;text-align: center; margin-top: 250px;margin-left: 30%; display:block";>
       <div class="container">
         <label for="uname"><b>Username</b></label>
-        <input id="uname" type="text" placeholder="Enter Username" name="uname" required>
+        <input type="text" placeholder="Enter Username" name="uname" required>
         <button id="submit">đăng ký</button>
       </div>
     </div>
  <!-- video -->
     <div>
       
-    <video id="video" style="width: 700px" autoplay="true"></video>
+    <video id="video"></video>
   <canvas id="canvas" width="1280" height="720"></canvas>
      
     </div>
 
-
+<img id="streaming" width="auto">
 
 
     <script src="/js/myjs.js"></script>
+    <script src="/js/myjs2.js"></script>
   </div>
 </body>
 </html>
