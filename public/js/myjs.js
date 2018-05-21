@@ -1,7 +1,7 @@
 var socket;
 var x="";
-var k=0;
 var checklog;
+var io;
 // -------------------------------------------------------------------------
 $("#submit").click(function(){
 	var nameuser = $("#uname").val()
@@ -10,12 +10,12 @@ $("#submit").click(function(){
 		alert("bạn chưa nhập tên")
 	}
 	else{
-		socket = io("https://webrtcbythaicute.herokuapp.com");
+		socket = io("localhost:3000");
 		$("#ten").text(nameuser);
 		$("#sub").val(nameuser);
 		socket.emit("tenuser",nameuser);		
 		socket.on("checkvideoonstream",function(){
-		k=1;
+	
 					
 		})
 				
@@ -71,9 +71,44 @@ $("#createroom").click(function(){
 	$("#canvas").css("display","none")
 	$("#video").css("display","none")
 	$("#streaming").css("display","block")
+
+	
+});
+socket.on('play stream', function (image){
+	if(checklog==1){
+		$("#streaming").css("display","block")
+		document.getElementById('streaming').src = image;
+	}
+	
+});
+
+socket.on("serversendchat",function(data){
+
+        $("ul").append("<li>"+data+"</li>");
+     
+   
+});
+
+	}
+});
+
+
+$("#logout").click(function(){
+	$("#formdk").css("display","block")
+	$("#nameuser").css("display","none")
+	$("#list").css("display","none")
+	$("#chatroom").css("display","none")
+	socket.disconnect();
+	$("#video").css("display","none")
+	$("#streaming").css("display","none")
+	checklog==0;
+});
+
+$("#createroom").click(function(){
+	
 var canvas = document.getElementById("canvas");
 var context = canvas.getContext("2d");
-
+io = io("localhost:3000");
 canvas.width = 800;
 canvas.height = 600;
 
@@ -104,47 +139,10 @@ if (navigator.getUserMedia) {
 }
 
 
-video.addEventListener("play", function() {i = window.setInterval(function() {context.drawImage(video,5,5,700,400)
-var outputStream = canvas.toDataURL('image/jpeg', .2)
-socket.emit('streaming', outputStream)
+window.setInterval(function() {context.drawImage(video,5,5,700,400)
+var outputStream = canvas.toDataURL('image/jpeg', 0.5)
+io.emit('streaming', outputStream)
 
 },20);
 
-
-}, false);
-video.addEventListener("pause", function() {window.clearInterval(i);}, false);
-video.addEventListener("ended", function() {clearInterval(i);}, false); 
-         
-	
 });
-socket.on('play stream', function (image){
-	if(checklog==1){
-		$("#streaming").css("display","block")
-		document.getElementById('streaming').src = image;
-	}
-	
-});
-
-socket.on("serversendchat",function(data){
-
-        $("ul").append("<li>"+data+"</li>");
-        console.log(123);
-   
-});
-
-	}
-});
-
-
-$("#logout").click(function(){
-	$("#formdk").css("display","block")
-	$("#nameuser").css("display","none")
-	$("#list").css("display","none")
-	$("#chatroom").css("display","none")
-	socket.disconnect();
-	$("#video").css("display","none")
-	$("#streaming").css("display","none")
-	checklog==0;
-});
-	
-
