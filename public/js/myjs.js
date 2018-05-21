@@ -5,18 +5,26 @@ var checklog;
 // -------------------------------------------------------------------------
 $("#submit").click(function(){
 	var nameuser = $("#uname").val()
+	
 	if(nameuser==""){
 		alert("bạn chưa nhập tên")
 	}
 	else{
-		socket = io("https://webrtcbythaicute.herokuapp.com/");
+		socket = io("localhost:3000");
 		$("#ten").text(nameuser);
 		$("#sub").val(nameuser);
 		socket.emit("tenuser",nameuser);		
 		socket.on("checkvideoonstream",function(){
 		k=1;
-		console.log(k)			
+					
 		})
+				
+		$("#btnchat").click(function(){
+			var inputchat = $("#inputchat").val()
+			socket.emit("clientsendchat",inputchat)
+			$("#inputchat").val("");
+		});
+
 
 		
 		checklog =1;
@@ -26,6 +34,7 @@ $("#submit").click(function(){
 			if(data==0){
 				$("#formdk").css("display","block")
 				$("#list").css("display","none")
+				$("#chatroom").css("display","none")
 				$("#streaming").css("display","none")
 				alert("ten dang nhap da ton tai");		
 			}
@@ -33,6 +42,8 @@ $("#submit").click(function(){
 				$("#formdk").css("display","none")
 				$("#nameuser").css("display","block")
 				$("#list").css("display","block")
+				$("#chatroom").css("display","block")
+
 			}
 		});
 		socket.on("listuser", function(data){
@@ -76,7 +87,7 @@ navigator.getUserMedia = navigator.getUserMedia ||
                          navigator.mozGetUserMedia;
 
 if (navigator.getUserMedia) {
-   navigator.getUserMedia({ audio: true, video: { width: 1280, height: 720 } },
+   navigator.getUserMedia({ audio: false, video: { width: 1280, height: 720 } },
       function(stream) {
          
          video.srcObject = stream;
@@ -114,6 +125,13 @@ socket.on('play stream', function (image){
 	
 });
 
+socket.on("serversendchat",function(data){
+
+        $("ul").append("<li>"+data+"</li>");
+        console.log(123);
+   
+});
+
 	}
 });
 
@@ -122,6 +140,7 @@ $("#logout").click(function(){
 	$("#formdk").css("display","block")
 	$("#nameuser").css("display","none")
 	$("#list").css("display","none")
+	$("#chatroom").css("display","none")
 	socket.disconnect();
 	$("#video").css("display","none")
 	$("#streaming").css("display","none")

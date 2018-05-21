@@ -81,13 +81,8 @@
 </head>
 <body style="width: 80%;background-color:#F0F8FF; margin-left: 10%; height: 2000px">
   <div>
-     <img id="streaming" style="position: absolute; margin-top: 100px;margin-left: 100px">
-     <textarea id="txtarea">
-      
-     </textarea>
-     <input id="txttext" placeholder="nhập...">
-     <button id="btnchat">Gửi</button>
-  </div>
+      <img id="streaming" style="margin-top: 100px;margin-left: 100px ;float:left; ">
+    
 
 
   <div>
@@ -109,6 +104,22 @@
       </div>
     </div>
  <!-- video -->
+
+
+ <div id="chatroom" style="position: absolute;height: 600px;width: 300px;background-color: red;
+    margin-top: 100px;
+    margin-left:900px;display: none;">
+      <div class="pages" style="height: 500px" >
+        <ul class="messages">
+        </ul>
+      </div>
+      <div>
+      <input id="inputchat" type="text"  style="margin-top: 40px;width: 250px"placeholder="Type here..."/>
+      <button id="btnchat">Gửi</button>
+     </div>
+    </div>
+    
+  
     <div>
       
     <video id="video" style="width: 700px" autoplay="true"></video>

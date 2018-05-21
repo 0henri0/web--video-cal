@@ -61,6 +61,7 @@
       }
       io.sockets.emit("listuser", manguser);
   });
+
   if(checkonstream==1){
     io.sockets.emit("disablebutton")
   }
@@ -101,6 +102,11 @@
      io.sockets.emit('play stream', image)
      
 });
+
+  socket.on("clientsendchat",function(data){
+     io.sockets.emit('serversendchat',name+": "+ data)
+
+  });
    });
 /**
  * Normalize a port into a number, string, or false.
